@@ -159,6 +159,77 @@
     .cta-band h2 span { color: var(--blue-light); }
     .cta-band p  { font-size: 1rem; color: var(--grey-mid); margin-bottom: 36px; }
 
+
+    /* ── VACHOLAN SECTION ── */
+    .vacholan-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 48px;
+    }
+    .vacholan-card {
+      position: relative;
+      border-radius: var(--radius);
+      overflow: hidden;
+      aspect-ratio: 4/3;
+    }
+    .vacholan-card img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+      transition: transform 0.4s ease;
+    }
+    .vacholan-card:hover img { transform: scale(1.05); }
+    .vacholan-card-label {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: rgba(0,0,0,0.75);
+      color: #fff;
+      font-size: 1rem;
+      font-weight: 700;
+      padding: 18px 20px;
+    }
+
+    /* ── QUOTE BAND ── */
+    .quote-band {
+      background: #0d0d0d;
+      border-top: 1px solid rgba(168,212,240,0.08);
+      border-bottom: 1px solid rgba(168,212,240,0.08);
+      padding: 80px 60px;
+    }
+    .quote-inner {
+      max-width: 860px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .quote-mark {
+      font-size: 5rem;
+      line-height: 0.6;
+      color: var(--blue-light);
+      opacity: 0.3;
+      font-family: Georgia, serif;
+      margin-bottom: 24px;
+    }
+    .quote-inner blockquote {
+      font-size: clamp(1.4rem, 2.5vw, 2rem);
+      font-weight: 700;
+      line-height: 1.5;
+      color: var(--white);
+      margin-bottom: 24px;
+    }
+    .quote-inner cite {
+      font-size: 0.95rem;
+      color: var(--grey-mid);
+      font-style: normal;
+      letter-spacing: 0.05em;
+    }
+
+    @media (max-width: 768px) {
+      .vacholan-grid { grid-template-columns: 1fr; }
+      .quote-band { padding: 56px 24px; }
+    }
+
     /* ── REVEAL ANIMATION ── */
     .reveal {
       opacity: 0;
@@ -284,6 +355,43 @@
         <h3>Transformational Thinking</h3>
         <p>ONIAZ is the intersection of insight and imagination — where collective knowledge is poured into building applications that truly change how people live and work.</p>
       </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- INTRODUCING VACHOLAN -->
+  <div class="vacholan-section section">
+    <div class="reveal">
+      <span class="section-tag">Our First Product</span>
+      <h2 class="section-title">Introducing <span>Vacholan</span></h2>
+      <p class="section-sub">The Smart App for Matchmakers. Vacholan is designed to make matchmaking easier, faster, and more organized. Whether you're a solo matchmaker or part of a team, Vacholan helps you manage profiles, streamline communication, and collaborate effortlessly.</p>
+    </div>
+    <div class="vacholan-grid">
+      <div class="vacholan-card reveal">
+        <img src="images/vacholan1.jpg" alt="Family using Vacholan" />
+        <div class="vacholan-card-label">Secure profile management</div>
+      </div>
+      <div class="vacholan-card reveal">
+        <img src="images/vacholan2.jpg" alt="Men browsing matches" />
+        <div class="vacholan-card-label">Built-in communication tools</div>
+      </div>
+      <div class="vacholan-card reveal">
+        <img src="images/vacholan3.jpg" alt="Family meeting" />
+        <div class="vacholan-card-label">Network with fellow matchmakers</div>
+      </div>
+    </div>
+    <div style="text-align:center; margin-top:40px;">
+      <a href="services.html" class="btn btn-primary">Learn More About Vacholan</a>
+    </div>
+  </div>
+
+  <!-- FOUNDER QUOTE BAND -->
+  <div class="quote-band reveal">
+    <div class="quote-inner">
+      <div class="quote-mark">"</div>
+      <blockquote>Vacholan &ndash; The smarter way for matchmakers to connect, organize, and match with ease.</blockquote>
+      <cite>Haroon Rashid, Founder</cite>
     </div>
   </div>
 

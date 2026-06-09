@@ -25,7 +25,6 @@
     .page-hero h1 span { color: var(--blue-light); }
     .page-hero p { margin: 20px auto 0; max-width: 560px; color: var(--grey-mid); font-size: 1rem; line-height: 1.8; }
 
-    /* ── CONTACT LAYOUT ── */
     .contact-grid {
       display: grid;
       grid-template-columns: 1fr 1.4fr;
@@ -33,97 +32,53 @@
       align-items: start;
     }
 
-    /* Left info panel */
     .contact-info { display: flex; flex-direction: column; gap: 36px; }
-
     .info-block h3 {
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--blue-light);
-      margin-bottom: 10px;
+      font-size: 0.72rem; font-weight: 700; letter-spacing: 0.18em;
+      text-transform: uppercase; color: var(--blue-light); margin-bottom: 10px;
     }
     .info-block p, .info-block a {
-      font-size: 0.92rem;
-      color: rgba(255,255,255,0.65);
-      line-height: 1.7;
+      font-size: 0.92rem; color: rgba(255,255,255,0.65); line-height: 1.7;
     }
     .info-block a:hover { color: var(--blue-light); }
 
     .info-socials { display: flex; gap: 12px; margin-top: 4px; }
     .info-socials a {
-      width: 38px; height: 38px;
-      border-radius: 50%;
+      width: 38px; height: 38px; border-radius: 50%;
       border: 1px solid rgba(168,212,240,0.18);
       background: rgba(168,212,240,0.04);
       display: flex; align-items: center; justify-content: center;
       transition: background var(--transition), border-color var(--transition);
     }
-    .info-socials a:hover {
-      background: rgba(168,212,240,0.14);
-      border-color: rgba(168,212,240,0.4);
-    }
+    .info-socials a:hover { background: rgba(168,212,240,0.14); border-color: rgba(168,212,240,0.4); }
     .info-socials svg { width: 15px; height: 15px; fill: var(--blue-light); }
+    .contact-divider { width: 100%; height: 1px; background: rgba(168,212,240,0.08); }
 
-    .contact-divider {
-      width: 100%;
-      height: 1px;
-      background: rgba(168,212,240,0.08);
-    }
-
-    /* Right form */
     .contact-form {
       background: var(--dark2);
       border: 1px solid rgba(168,212,240,0.08);
       border-radius: var(--radius);
       padding: 48px 44px;
     }
-    .contact-form h2 {
-      font-size: 1.5rem;
-      font-weight: 800;
-      margin-bottom: 6px;
-    }
+    .contact-form h2 { font-size: 1.5rem; font-weight: 800; margin-bottom: 6px; }
     .contact-form h2 span { color: var(--blue-light); }
-    .contact-form .form-sub {
-      font-size: 0.87rem;
-      color: var(--grey-mid);
-      margin-bottom: 32px;
-    }
+    .contact-form .form-sub { font-size: 0.87rem; color: var(--grey-mid); margin-bottom: 32px; }
 
-    .form-row {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 18px;
-    }
-
-    .form-group {
-      display: flex;
-      flex-direction: column;
-      gap: 7px;
-      margin-bottom: 18px;
-    }
-    .form-group.full { grid-column: 1 / -1; }
+    .form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
+    .form-group { display: flex; flex-direction: column; gap: 7px; margin-bottom: 18px; }
 
     label {
-      font-size: 0.76rem;
-      font-weight: 600;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: rgba(255,255,255,0.5);
+      font-size: 0.76rem; font-weight: 600; letter-spacing: 0.1em;
+      text-transform: uppercase; color: rgba(255,255,255,0.5);
     }
 
     input, textarea, select {
       background: rgba(255,255,255,0.04);
       border: 1px solid rgba(168,212,240,0.12);
-      border-radius: 8px;
-      padding: 13px 16px;
-      color: var(--white);
-      font-size: 0.9rem;
-      font-family: inherit;
-      outline: none;
+      border-radius: 8px; padding: 13px 16px;
+      color: var(--white); font-size: 0.9rem; font-family: inherit;
+      outline: none; width: 100%;
       transition: border-color var(--transition), background var(--transition);
-      width: 100%;
     }
     input::placeholder, textarea::placeholder { color: rgba(255,255,255,0.25); }
     input:focus, textarea:focus, select:focus {
@@ -133,69 +88,55 @@
     select option { background: #1a1e26; }
     textarea { resize: vertical; min-height: 130px; }
 
-    .form-submit {
-      margin-top: 8px;
-      width: 100%;
-      justify-content: center;
-      font-size: 0.95rem;
-    }
+    .form-submit { margin-top: 8px; width: 100%; justify-content: center; font-size: 0.95rem; }
+    .form-note { font-size: 0.76rem; color: var(--grey-mid); text-align: center; margin-top: 14px; }
 
-    .form-note {
-      font-size: 0.76rem;
-      color: var(--grey-mid);
-      text-align: center;
-      margin-top: 14px;
-    }
-
-    /* ── SUCCESS MESSAGE ── */
-    .form-success {
+    /* Status messages */
+    .form-success, .form-error {
       display: none;
       text-align: center;
-      padding: 40px 20px;
+      padding: 32px 20px;
+      border-radius: var(--radius);
+      margin-bottom: 24px;
     }
-    .form-success .check {
-      width: 60px; height: 60px;
-      border-radius: 50%;
-      background: rgba(168,212,240,0.1);
-      border: 2px solid var(--blue-light);
+    .form-success {
+      background: rgba(168,212,240,0.06);
+      border: 1px solid rgba(168,212,240,0.2);
+    }
+    .form-error {
+      background: rgba(192,57,43,0.08);
+      border: 1px solid rgba(192,57,43,0.3);
+    }
+    .status-icon {
+      width: 56px; height: 56px; border-radius: 50%;
       display: flex; align-items: center; justify-content: center;
-      margin: 0 auto 20px;
+      margin: 0 auto 16px;
     }
-    .form-success .check svg { width: 24px; height: 24px; stroke: var(--blue-light); fill: none; stroke-width: 2.5; }
-    .form-success h3 { font-size: 1.3rem; font-weight: 800; margin-bottom: 10px; }
-    .form-success p { font-size: 0.9rem; color: var(--grey-mid); }
+    .form-success .status-icon { background: rgba(168,212,240,0.1); border: 2px solid var(--blue-light); }
+    .form-error   .status-icon { background: rgba(192,57,43,0.1);   border: 2px solid #c0392b; }
+    .status-icon svg { width: 22px; height: 22px; fill: none; stroke-width: 2.5; }
+    .form-success .status-icon svg { stroke: var(--blue-light); }
+    .form-error   .status-icon svg { stroke: #c0392b; }
+    .form-success h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; color: var(--blue-light); }
+    .form-error   h3 { font-size: 1.2rem; font-weight: 800; margin-bottom: 8px; color: #c0392b; }
+    .form-success p, .form-error p { font-size: 0.88rem; color: var(--grey-mid); }
 
-    /* ── MAP PLACEHOLDER ── */
-    .map-band {
-      background: var(--dark2);
-      border-top: 1px solid rgba(168,212,240,0.08);
-    }
+    .map-band { background: var(--dark2); border-top: 1px solid rgba(168,212,240,0.08); }
     .map-inner {
-      max-width: 1400px;
-      margin: 0 auto;
-      padding: 72px 60px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 60px;
-      align-items: center;
+      max-width: 1400px; margin: 0 auto; padding: 72px 60px;
+      display: grid; grid-template-columns: 1fr 1fr; gap: 60px; align-items: center;
     }
     .map-box {
       background: rgba(168,212,240,0.03);
       border: 1px solid rgba(168,212,240,0.1);
-      border-radius: var(--radius);
-      height: 280px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      gap: 12px;
-      color: var(--grey-mid);
-      font-size: 0.85rem;
+      border-radius: var(--radius); height: 280px;
+      display: flex; align-items: center; justify-content: center;
+      flex-direction: column; gap: 12px; color: var(--grey-mid); font-size: 0.85rem;
     }
     .map-box svg { width: 32px; height: 32px; stroke: var(--blue-light); fill: none; stroke-width: 1.4; opacity: 0.6; }
     .map-text h3 { font-size: 1.4rem; font-weight: 800; margin-bottom: 12px; }
     .map-text h3 span { color: var(--blue-light); }
-    .map-text p  { font-size: 0.9rem; color: var(--grey-mid); line-height: 1.75; }
+    .map-text p { font-size: 0.9rem; color: var(--grey-mid); line-height: 1.75; }
 
     .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
     .reveal.visible { opacity:1; transform:translateY(0); }
@@ -234,7 +175,6 @@
     <p>Have a project in mind, a question, or just want to say hello? We'd love to hear from you.</p>
   </div>
 
-  <!-- CONTACT SECTION -->
   <div class="section">
     <div class="contact-grid">
 
@@ -277,54 +217,66 @@
       </div>
 
       <!-- RIGHT FORM -->
-      <div class="contact-form reveal" id="contactFormWrap">
-        <h2>Send us a <span>message</span></h2>
-        <p class="form-sub">Fill out the form below and we'll get back to you shortly.</p>
+      <div class="contact-form reveal">
 
-        <form id="contactForm" onsubmit="handleSubmit(event)">
-          <div class="form-row">
-            <div class="form-group">
-              <label for="fname">First Name</label>
-              <input type="text" id="fname" placeholder="Haroon" required />
-            </div>
-            <div class="form-group">
-              <label for="lname">Last Name</label>
-              <input type="text" id="lname" placeholder="Rashid" required />
-            </div>
-          </div>
-          <div class="form-group">
-            <label for="email">Email Address</label>
-            <input type="email" id="email" placeholder="you@example.com" required />
-          </div>
-          <div class="form-group">
-            <label for="subject">Subject</label>
-            <select id="subject">
-              <option value="">Select a topic...</option>
-              <option>General Enquiry</option>
-              <option>Partnership Opportunity</option>
-              <option>Product Interest</option>
-              <option>Careers</option>
-              <option>Press / Media</option>
-              <option>Other</option>
-            </select>
-          </div>
-          <div class="form-group">
-            <label for="message">Message</label>
-            <textarea id="message" placeholder="Tell us about your project or question..." required></textarea>
-          </div>
-          <button type="submit" class="btn btn-primary form-submit">Send Message</button>
-          <p class="form-note">We respect your privacy. Your information will never be shared.</p>
-        </form>
-
+        <!-- Success Message -->
         <div class="form-success" id="formSuccess">
-          <div class="check">
+          <div class="status-icon">
             <svg viewBox="0 0 24 24"><polyline points="20 6 9 17 4 12"/></svg>
           </div>
           <h3>Message Sent!</h3>
           <p>Thank you for reaching out. We'll be in touch within 24–48 hours.</p>
         </div>
-      </div>
 
+        <!-- Error Message -->
+        <div class="form-error" id="formError">
+          <div class="status-icon">
+            <svg viewBox="0 0 24 24"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+          </div>
+          <h3>Something went wrong</h3>
+          <p>Please try again or email us directly at <a href="mailto:hello@oniaz.pk" style="color:var(--blue-light)">hello@oniaz.pk</a></p>
+        </div>
+
+        <div id="formWrap">
+          <h2>Send us a <span>message</span></h2>
+          <p class="form-sub">Fill out the form below and we'll get back to you shortly.</p>
+
+          <form action="send_mail.php" method="POST">
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fname">First Name</label>
+                <input type="text" id="fname" name="fname" placeholder="Haroon" required />
+              </div>
+              <div class="form-group">
+                <label for="lname">Last Name</label>
+                <input type="text" id="lname" name="lname" placeholder="Rashid" required />
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="email">Email Address</label>
+              <input type="email" id="email" name="email" placeholder="you@example.com" required />
+            </div>
+            <div class="form-group">
+              <label for="subject">Subject</label>
+              <select id="subject" name="subject">
+                <option value="General Enquiry">General Enquiry</option>
+                <option value="Partnership Opportunity">Partnership Opportunity</option>
+                <option value="Product Interest">Product Interest</option>
+                <option value="Careers">Careers</option>
+                <option value="Press / Media">Press / Media</option>
+                <option value="Other">Other</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="message">Message</label>
+              <textarea id="message" name="message" placeholder="Tell us about your project or question..." required></textarea>
+            </div>
+            <button type="submit" class="btn btn-primary form-submit">Send Message</button>
+            <p class="form-note">We respect your privacy. Your information will never be shared.</p>
+          </form>
+        </div>
+
+      </div>
     </div>
   </div>
 
@@ -393,11 +345,16 @@
 
 <script src="js/main.js"></script>
 <script>
-function handleSubmit(e) {
-  e.preventDefault();
-  document.getElementById('contactForm').style.display = 'none';
-  document.getElementById('formSuccess').style.display = 'block';
-}
+  // Show success or error based on URL parameter after PHP redirect
+  const params = new URLSearchParams(window.location.search);
+  const status = params.get('status');
+  if (status === 'success') {
+    document.getElementById('formWrap').style.display = 'none';
+    document.getElementById('formSuccess').style.display = 'block';
+  } else if (status === 'error') {
+    document.getElementById('formError').style.display = 'block';
+  }
 </script>
+
 </body>
 </html>
