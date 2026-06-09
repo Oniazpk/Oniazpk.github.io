@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONIAZ – Our Team</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #0a0a0a 0%, #0d1e2f 100%);
+      padding: 100px 60px 80px;
+      text-align: center;
+      border-bottom: 1px solid rgba(168,212,240,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(42,123,181,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero .section-tag { display: block; margin-bottom: 14px; }
+    .page-hero h1 { font-size: clamp(2.4rem,4vw,3.6rem); font-weight: 800; letter-spacing: -1px; }
+    .page-hero h1 span { color: var(--blue-light); }
+    .page-hero p { margin: 20px auto 0; max-width: 560px; color: var(--grey-mid); font-size: 1rem; line-height: 1.8; }
+
+    /* ── TEAM GRID ── */
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 28px;
+      margin-top: 56px;
+    }
+
+    .team-card {
+      background: var(--dark2);
+      border: 1px solid rgba(168,212,240,0.08);
+      border-radius: var(--radius);
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .team-card:hover {
+      border-color: rgba(168,212,240,0.28);
+      transform: translateY(-6px);
+    }
+
+    .team-photo {
+      width: 100%;
+      aspect-ratio: 1 / 1;
+      object-fit: cover;
+      object-position: top center;
+      display: block;
+      filter: grayscale(15%);
+      transition: filter var(--transition);
+    }
+    .team-card:hover .team-photo { filter: grayscale(0%); }
+
+    .team-body {
+      padding: 24px 22px 28px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 4px;
+      flex: 1;
+    }
+
+    .team-name {
+      font-size: 1.05rem;
+      font-weight: 800;
+      color: var(--white);
+    }
+
+    .team-role {
+      font-size: 0.82rem;
+      font-weight: 700;
+      color: var(--blue-light);
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+
+    .team-bio {
+      font-size: 0.8rem;
+      line-height: 1.72;
+      color: var(--grey-mid);
+      flex: 1;
+    }
+
+    .team-socials {
+      display: flex;
+      gap: 10px;
+      margin-top: 18px;
+      justify-content: center;
+    }
+    .team-socials a {
+      width: 32px; height: 32px;
+      border-radius: 50%;
+      background: rgba(168,212,240,0.06);
+      border: 1px solid rgba(168,212,240,0.15);
+      display: flex; align-items: center; justify-content: center;
+      transition: background var(--transition), border-color var(--transition);
+    }
+    .team-socials a:hover {
+      background: rgba(168,212,240,0.15);
+      border-color: rgba(168,212,240,0.4);
+    }
+    .team-socials svg { width: 13px; height: 13px; fill: var(--blue-light); }
+
+    /* ── STAT BAND ── */
+    .stat-band {
+      background: var(--dark2);
+      border-top: 1px solid rgba(168,212,240,0.08);
+      border-bottom: 1px solid rgba(168,212,240,0.08);
+    }
+    .stat-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+    .stat-cell {
+      padding: 48px 24px;
+      text-align: center;
+      border-right: 1px solid rgba(168,212,240,0.06);
+    }
+    .stat-cell:last-child { border-right: none; }
+    .stat-big { font-size: 2.6rem; font-weight: 800; color: var(--blue-light); line-height: 1; }
+    .stat-desc { font-size: 0.8rem; color: var(--grey-mid); margin-top: 6px; text-transform: uppercase; letter-spacing: 0.1em; }
+
+    /* ── JOIN CTA ── */
+    .join-section {
+      text-align: center;
+      padding: 96px 60px;
+    }
+    .join-section h2 { font-size: 2rem; font-weight: 800; margin-bottom: 14px; }
+    .join-section h2 span { color: var(--blue-light); }
+    .join-section p { color: var(--grey-mid); max-width: 480px; margin: 0 auto 32px; line-height: 1.75; }
+
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media (max-width: 1100px) {
+      .team-grid { grid-template-columns: repeat(2, 1fr); }
+      .stat-row  { grid-template-columns: repeat(2, 1fr); }
+      .stat-cell:nth-child(2) { border-right: none; }
+    }
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .stat-row  { grid-template-columns: 1fr 1fr; }
+      .page-hero { padding: 80px 24px 60px; }
+      .join-section { padding: 60px 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="ONIAZ" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="team.html" class="active">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-content">
+
+  <div class="page-hero">
+    <span class="section-tag">The People</span>
+    <h1>Meet the <span>Team</span></h1>
+    <p>Four visionary professionals. Decades of combined expertise. One shared mission to build technology that truly matters.</p>
+  </div>
+
+  <!-- TEAM GRID -->
+  <div class="section">
+    <div class="team-grid">
+
+      <!-- Haroon Rashid -->
+      <div class="team-card reveal">
+        <img src="images/haroon_rashid.jpeg" alt="Haroon Rashid" class="team-photo" />
+        <div class="team-body">
+          <div class="team-name">Haroon Rashid</div>
+          <div class="team-role">CEO &amp; Founder</div>
+          <p class="team-bio">Over 20 years of experience in digital transformation and IT strategy. Led major telecom CRM and cloud transformation projects, driving data innovation. Expertise in AI/ML for enhanced customer experience and efficiency. Recognized for leadership with multiple awards. Worked across telecom, banking/fintech, automotive, and retail sectors.</p>
+          <div class="team-socials">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Sadia Tahir -->
+      <div class="team-card reveal">
+        <img src="images/sadia_tahir.jpeg" alt="Sadia Tahir" class="team-photo" />
+        <div class="team-body">
+          <div class="team-name">Sadia Tahir</div>
+          <div class="team-role">COO &amp; Founder</div>
+          <p class="team-bio">With over 19 years of experience, she was Marketing Director and Business Analyst at Arcane Consultancy, specialising in system analysis, software design, internet marketing, and social media campaigns. She also served as Marketing Manager and Business Analyst at Syssoft Group, responsible for project acquisition, user requirements analysis, and marketing strategy development.</p>
+          <div class="team-socials">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Kamran Shafi -->
+      <div class="team-card reveal">
+        <img src="images/kamran_shafi.jpeg" alt="Kamran Shafi" class="team-photo" />
+        <div class="team-body">
+          <div class="team-name">Kamran Shafi</div>
+          <div class="team-role">CTO</div>
+          <p class="team-bio">Over 20 years of leadership experience driving IT solutions in leading web development projects. Extensive Application Development experience with key roles at leading firms in the US and Canada. Deep expertise in scalable architecture, modern frameworks, and enterprise-grade technology delivery.</p>
+          <div class="team-socials">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Wajahat Ali Syed -->
+      <div class="team-card reveal">
+        <img src="images/wajahat_ali.jpeg" alt="Wajahat Ali Syed" class="team-photo" />
+        <div class="team-body">
+          <div class="team-name">Wajahat Ali Syed</div>
+          <div class="team-role">Advisor</div>
+          <p class="team-bio">A seasoned professional in marketing &amp; supply chain. He holds a degree from the Institute of Business Administration. His career reflects significant experience in the energy sector, underscoring his leadership and expertise in regional management across multiple markets.</p>
+          <div class="team-socials">
+            <a href="#" aria-label="LinkedIn">
+              <svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+            </a>
+            <a href="#" aria-label="Twitter/X">
+              <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+            </a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- STAT BAND -->
+  <div class="stat-band reveal">
+    <div class="stat-row">
+      <div class="stat-cell">
+        <div class="stat-big">18+</div>
+        <div class="stat-desc">Years Each</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-big">4</div>
+        <div class="stat-desc">Disciplines</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-big">3</div>
+        <div class="stat-desc">Continents</div>
+      </div>
+      <div class="stat-cell">
+        <div class="stat-big">1</div>
+        <div class="stat-desc">Mission</div>
+      </div>
+    </div>
+  </div>
+
+  <!-- JOIN CTA -->
+  <div class="join-section reveal">
+    <span class="section-tag">Work With Us</span>
+    <h2>Want to build the <span>future</span> with us?</h2>
+    <p>We're always interested in connecting with talented people who share our belief that technology should make life better.</p>
+    <a href="contact.html" class="btn btn-primary">Get in Touch</a>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.jpg" alt="ONIAZ" />
+      <p>Purpose-driven technology built on deep experience and bold innovation. ...out of the box.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Digital Transformation</a></li>
+        <li><a href="services.html">UX / Product Design</a></li>
+        <li><a href="services.html">Cloud Architecture</a></li>
+        <li><a href="services.html">AI / ML Solutions</a></li>
+        <li><a href="services.html">Strategic Marketing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@oniaz.pk">hello@oniaz.pk</a></li>
+        <li><a href="#">Lahore, Pakistan</a></li>
+        <li><a href="#">oniaz.pk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ONIAZ. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="#" aria-label="Twitter/X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

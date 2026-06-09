@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONIAZ – About Us</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    /* ── PAGE HERO ── */
+    .page-hero {
+      background: linear-gradient(135deg, #0a0a0a 0%, #0d1e2f 100%);
+      padding: 100px 60px 80px;
+      text-align: center;
+      border-bottom: 1px solid rgba(168,212,240,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(42,123,181,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero .section-tag { display: block; margin-bottom: 14px; }
+    .page-hero h1 { font-size: clamp(2.4rem, 4vw, 3.6rem); font-weight: 800; letter-spacing: -1px; }
+    .page-hero h1 span { color: var(--blue-light); }
+    .page-hero p { margin: 20px auto 0; max-width: 560px; color: var(--grey-mid); font-size: 1rem; line-height: 1.8; }
+
+    /* ── COMPANY PROFILE ── */
+    .profile-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.3fr;
+      gap: 80px;
+      align-items: center;
+    }
+    .profile-left { position: relative; }
+    .profile-left img {
+      width: 100%;
+      border-radius: var(--radius);
+      opacity: 0.9;
+    }
+    .profile-accent {
+      position: absolute;
+      bottom: -20px; right: -20px;
+      width: 120px; height: 120px;
+      border: 2px solid rgba(168,212,240,0.2);
+      border-radius: var(--radius);
+      pointer-events: none;
+    }
+    .profile-right { display: flex; flex-direction: column; gap: 20px; }
+    .profile-right p { font-size: 0.95rem; color: rgba(255,255,255,0.75); line-height: 1.85; }
+    .profile-right p strong { color: var(--blue-light); font-weight: 600; }
+
+    /* ── VALUES ── */
+    .values-bg { background: var(--dark2); }
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 52px;
+    }
+    .value-card {
+      padding: 32px 24px;
+      border: 1px solid rgba(168,212,240,0.08);
+      border-radius: var(--radius);
+      background: rgba(255,255,255,0.02);
+      transition: border-color var(--transition), transform var(--transition);
+    }
+    .value-card:hover { border-color: rgba(168,212,240,0.28); transform: translateY(-4px); }
+    .value-num {
+      font-size: 2.4rem;
+      font-weight: 800;
+      color: rgba(168,212,240,0.18);
+      line-height: 1;
+      margin-bottom: 14px;
+    }
+    .value-card h3 { font-size: 1rem; font-weight: 700; margin-bottom: 10px; color: var(--blue-light); }
+    .value-card p  { font-size: 0.84rem; color: var(--grey-mid); line-height: 1.7; }
+
+    /* ── MISSION SPLIT ── */
+    .mission-split {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2px;
+    }
+    .mission-panel {
+      padding: 72px 60px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .mission-panel.dark { background: var(--dark2); }
+    .mission-panel.blue { background: linear-gradient(135deg, #0d2236, #0a1a2e); }
+    .mission-panel h2 { font-size: 1.7rem; font-weight: 800; margin-bottom: 18px; }
+    .mission-panel h2 span { color: var(--blue-light); }
+    .mission-panel p  { font-size: 0.92rem; color: var(--grey-mid); line-height: 1.8; }
+
+    /* ── REVEAL ── */
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media (max-width: 1024px) {
+      .values-grid { grid-template-columns: repeat(2,1fr); }
+    }
+    @media (max-width: 768px) {
+      .profile-grid { grid-template-columns: 1fr; gap: 40px; }
+      .profile-accent { display: none; }
+      .mission-split { grid-template-columns: 1fr; }
+      .mission-panel { padding: 48px 24px; }
+      .page-hero { padding: 80px 24px 60px; }
+      .values-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 520px) {
+      .values-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="ONIAZ" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html" class="active">About Us</a></li>
+    <li><a href="services.html">Services</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-content">
+
+  <!-- PAGE HERO -->
+  <div class="page-hero">
+    <span class="section-tag">Our Story</span>
+    <h1>About <span>ONIAZ</span></h1>
+    <p>A purpose-driven startup built on deep experience, shared values, and a bold vision for what technology can be.</p>
+  </div>
+
+  <!-- COMPANY PROFILE -->
+  <div class="section">
+    <div class="profile-grid">
+      <div class="profile-left reveal">
+        <img src="images/circuit.png" alt="ONIAZ Circuit" />
+        <div class="profile-accent"></div>
+      </div>
+      <div class="profile-right reveal">
+        <span class="section-tag">Company Profile</span>
+        <h2 class="section-title">Founded in <span>2025</span></h2>
+        <p>ONIAZ is a purpose-driven startup built on a foundation of deep experience and bold innovation. Our journey is more than just about launching another tech company — it's about combining decades of expertise with a shared desire to create <strong>smart, human-centered solutions that matter</strong>.</p>
+        <p>Behind ONIAZ is a close-knit team of four visionary professionals, each bringing over 18 years of industry experience to the table. From tech architecture and user experience design to business development, project management, and strategic marketing, we've honed our skills through years of working with startups, enterprises, and global brands.</p>
+        <p>Now, we've joined forces under a single mission: to craft tech that's not just functional but <strong>transformational</strong>. ONIAZ is the intersection of insight and imagination — a space where our collective knowledge is poured into building applications that are clean, intuitive, and genuinely helpful.</p>
+        <div style="margin-top:8px;">
+          <a href="team.html" class="btn btn-primary">Meet the Team</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- VALUES -->
+  <div class="values-bg">
+    <div class="section">
+      <div class="reveal">
+        <span class="section-tag">What Drives Us</span>
+        <h2 class="section-title">Our Core <span>Values</span></h2>
+        <p class="section-sub">Everything we build flows from a small set of deeply held principles.</p>
+      </div>
+      <div class="values-grid">
+        <div class="value-card reveal">
+          <div class="value-num">01</div>
+          <h3>Clarity</h3>
+          <p>We solve real problems with clarity and empathy. Clean thinking leads to clean products.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-num">02</div>
+          <h3>Purpose</h3>
+          <p>We don't chase trends. We build tools that serve a purpose and deliver value from day one.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-num">03</div>
+          <h3>Transformation</h3>
+          <p>We aim to build tech that isn't just functional, but truly changes how people live and work.</p>
+        </div>
+        <div class="value-card reveal">
+          <div class="value-num">04</div>
+          <h3>Empathy</h3>
+          <p>Every design decision starts with the user. Technology should feel personal, not mechanical.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- MISSION / VISION SPLIT -->
+  <div class="mission-split">
+    <div class="mission-panel dark reveal">
+      <span class="section-tag">Mission</span>
+      <h2>Craft tech that is <span>transformational</span></h2>
+      <p>Our mission is to craft technology that isn't just functional but genuinely changes how people interact with the world — simplifying complexity, amplifying capability, and making every interaction feel effortless.</p>
+    </div>
+    <div class="mission-panel blue reveal">
+      <span class="section-tag">Vision</span>
+      <h2>A smarter future, <span>together</span></h2>
+      <p>We envision a world where intelligent, minimalist products empower communities — starting with the South Asian diaspora and expanding into every vertical where technology can reimagine everyday interactions.</p>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.jpg" alt="ONIAZ" />
+      <p>Purpose-driven technology built on deep experience and bold innovation. ...out of the box.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Digital Transformation</a></li>
+        <li><a href="services.html">UX / Product Design</a></li>
+        <li><a href="services.html">Cloud Architecture</a></li>
+        <li><a href="services.html">AI / ML Solutions</a></li>
+        <li><a href="services.html">Strategic Marketing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@oniaz.pk">hello@oniaz.pk</a></li>
+        <li><a href="#">Lahore, Pakistan</a></li>
+        <li><a href="#">oniaz.pk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ONIAZ. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="#" aria-label="Twitter/X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>

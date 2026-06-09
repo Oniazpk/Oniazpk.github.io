@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ONIAZ – Services</title>
+  <link rel="stylesheet" href="css/style.css" />
+  <style>
+    .page-hero {
+      background: linear-gradient(135deg, #0a0a0a 0%, #0d1e2f 100%);
+      padding: 100px 60px 80px;
+      text-align: center;
+      border-bottom: 1px solid rgba(168,212,240,0.1);
+      position: relative;
+      overflow: hidden;
+    }
+    .page-hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 60% 80% at 50% 100%, rgba(42,123,181,0.12), transparent 70%);
+      pointer-events: none;
+    }
+    .page-hero .section-tag { display: block; margin-bottom: 14px; }
+    .page-hero h1 { font-size: clamp(2.4rem,4vw,3.6rem); font-weight: 800; letter-spacing: -1px; }
+    .page-hero h1 span { color: var(--blue-light); }
+    .page-hero p { margin: 20px auto 0; max-width: 560px; color: var(--grey-mid); font-size: 1rem; line-height: 1.8; }
+
+    /* ── SERVICES GRID ── */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin-top: 56px;
+    }
+    .service-card {
+      background: var(--dark2);
+      border: 1px solid rgba(168,212,240,0.08);
+      border-radius: var(--radius);
+      padding: 40px 32px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      transition: border-color var(--transition), transform var(--transition);
+      position: relative;
+      overflow: hidden;
+    }
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--blue-dark), var(--blue-light));
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform var(--transition);
+    }
+    .service-card:hover { border-color: rgba(168,212,240,0.25); transform: translateY(-5px); }
+    .service-card:hover::before { transform: scaleX(1); }
+
+    .service-icon {
+      width: 52px; height: 52px;
+      background: rgba(42,123,181,0.12);
+      border-radius: 12px;
+      display: flex; align-items: center; justify-content: center;
+    }
+    .service-icon svg { width: 24px; height: 24px; stroke: var(--blue-light); fill: none; stroke-width: 1.7; stroke-linecap: round; stroke-linejoin: round; }
+    .service-card h3 { font-size: 1.1rem; font-weight: 700; }
+    .service-card p  { font-size: 0.86rem; color: var(--grey-mid); line-height: 1.75; flex: 1; }
+    .service-tags { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 4px; }
+    .service-tag {
+      font-size: 0.7rem;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      background: rgba(168,212,240,0.08);
+      padding: 4px 10px;
+      border-radius: 4px;
+    }
+
+    /* ── PROCESS ── */
+    .process-bg { background: var(--dark2); }
+    .process-steps {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 0;
+      margin-top: 56px;
+      position: relative;
+    }
+    .process-steps::before {
+      content: '';
+      position: absolute;
+      top: 28px; left: 10%; right: 10%;
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(168,212,240,0.25), transparent);
+    }
+    .process-step {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      padding: 0 20px;
+      position: relative;
+    }
+    .step-circle {
+      width: 56px; height: 56px;
+      border-radius: 50%;
+      border: 1.5px solid rgba(168,212,240,0.35);
+      background: var(--dark);
+      display: flex; align-items: center; justify-content: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      color: var(--blue-light);
+      letter-spacing: 0.05em;
+      margin-bottom: 20px;
+      position: relative;
+      z-index: 1;
+    }
+    .process-step h4 { font-size: 0.95rem; font-weight: 700; margin-bottom: 8px; }
+    .process-step p  { font-size: 0.82rem; color: var(--grey-mid); line-height: 1.65; }
+
+    /* ── FEATURED PRODUCT ── */
+    .featured-wrap {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 72px;
+      align-items: center;
+    }
+    .featured-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(168,212,240,0.08);
+      border: 1px solid rgba(168,212,240,0.2);
+      border-radius: 20px;
+      padding: 6px 14px;
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--blue-light);
+      margin-bottom: 22px;
+    }
+    .featured-badge::before { content: '●'; font-size: 0.5rem; }
+    .featured-right p { font-size: 0.95rem; color: rgba(255,255,255,0.7); line-height: 1.85; margin-bottom: 16px; }
+    .feature-list { list-style: none; display: flex; flex-direction: column; gap: 12px; margin: 24px 0; }
+    .feature-list li {
+      display: flex; align-items: flex-start; gap: 12px;
+      font-size: 0.88rem; color: rgba(255,255,255,0.7);
+    }
+    .feature-list li::before {
+      content: '◆';
+      color: var(--blue-light);
+      font-size: 0.55rem;
+      margin-top: 5px;
+      flex-shrink: 0;
+    }
+    .featured-visual {
+      background: var(--dark2);
+      border: 1px solid rgba(168,212,240,0.1);
+      border-radius: var(--radius);
+      aspect-ratio: 1 / 1;
+      display: flex; align-items: center; justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .featured-visual img { width: 85%; opacity: 0.6; }
+
+    .reveal { opacity:0; transform:translateY(28px); transition:opacity .6s ease,transform .6s ease; }
+    .reveal.visible { opacity:1; transform:translateY(0); }
+
+    @media (max-width: 1024px) {
+      .services-grid { grid-template-columns: 1fr 1fr; }
+      .process-steps { grid-template-columns: 1fr 1fr; gap: 40px; }
+      .process-steps::before { display: none; }
+      .featured-wrap { grid-template-columns: 1fr; gap: 40px; }
+    }
+    @media (max-width: 640px) {
+      .services-grid { grid-template-columns: 1fr; }
+      .process-steps { grid-template-columns: 1fr; }
+      .page-hero { padding: 80px 24px 60px; }
+    }
+  </style>
+</head>
+<body>
+
+<nav class="navbar">
+  <a href="index.html" class="nav-logo"><img src="images/logo.jpg" alt="ONIAZ" /></a>
+  <ul class="nav-links">
+    <li><a href="index.html">Home</a></li>
+    <li><a href="about.html">About Us</a></li>
+    <li><a href="services.html" class="active">Services</a></li>
+    <li><a href="team.html">Team</a></li>
+    <li><a href="contact.html" class="nav-cta">Contact Us</a></li>
+  </ul>
+  <button class="nav-toggle" aria-label="Toggle menu"><span></span><span></span><span></span></button>
+</nav>
+
+<div class="page-content">
+
+  <div class="page-hero">
+    <span class="section-tag">What We Do</span>
+    <h1>Our <span>Services</span></h1>
+    <p>From strategy to execution — we build digital products and platforms that solve real problems with clarity and precision.</p>
+  </div>
+
+  <!-- SERVICES GRID -->
+  <div class="section">
+    <div class="reveal">
+      <span class="section-tag">Capabilities</span>
+      <h2 class="section-title">What We <span>Deliver</span></h2>
+      <p class="section-sub">End-to-end capabilities across the full product lifecycle.</p>
+    </div>
+    <div class="services-grid">
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <h3>Digital Transformation</h3>
+        <p>We guide organisations through end-to-end digital change — modernising infrastructure, migrating to the cloud, and reimagining processes for the next decade.</p>
+        <div class="service-tags">
+          <span class="service-tag">Strategy</span>
+          <span class="service-tag">Cloud</span>
+          <span class="service-tag">CRM</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><rect x="2" y="3" width="20" height="14" rx="2"/><path d="M8 21h8M12 17v4"/></svg>
+        </div>
+        <h3>UX / Product Design</h3>
+        <p>Human-centered design that makes complex interactions feel effortless. From wireframes to polished interfaces, every pixel is intentional.</p>
+        <div class="service-tags">
+          <span class="service-tag">UX Research</span>
+          <span class="service-tag">UI Design</span>
+          <span class="service-tag">Prototyping</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
+        </div>
+        <h3>Software Development</h3>
+        <p>Full-stack web and mobile development with a focus on scalable architecture, clean code, and long-term maintainability.</p>
+        <div class="service-tags">
+          <span class="service-tag">Web</span>
+          <span class="service-tag">Mobile</span>
+          <span class="service-tag">API</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M12 2a10 10 0 1 0 0 20 10 10 0 0 0 0-20z"/><path d="M12 8v4l3 3"/></svg>
+        </div>
+        <h3>AI / ML Solutions</h3>
+        <p>Intelligent systems that learn, adapt, and improve. We integrate AI and machine learning to enhance customer experience and drive operational efficiency.</p>
+        <div class="service-tags">
+          <span class="service-tag">AI</span>
+          <span class="service-tag">ML</span>
+          <span class="service-tag">Automation</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+        </div>
+        <h3>Strategic Marketing</h3>
+        <p>Data-driven marketing strategies that connect brands with the right audiences. Social media, content, campaigns, and growth funnels built for measurable ROI.</p>
+        <div class="service-tags">
+          <span class="service-tag">Growth</span>
+          <span class="service-tag">Social</span>
+          <span class="service-tag">Content</span>
+        </div>
+      </div>
+      <div class="service-card reveal">
+        <div class="service-icon">
+          <svg viewBox="0 0 24 24"><path d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z"/></svg>
+        </div>
+        <h3>Project Management</h3>
+        <p>Structured delivery frameworks that keep complex projects on track, on budget, and aligned with business goals — from discovery to launch and beyond.</p>
+        <div class="service-tags">
+          <span class="service-tag">Agile</span>
+          <span class="service-tag">Delivery</span>
+          <span class="service-tag">Scrum</span>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- PROCESS -->
+  <div class="process-bg">
+    <div class="section">
+      <div class="reveal">
+        <span class="section-tag">How We Work</span>
+        <h2 class="section-title">Our <span>Process</span></h2>
+        <p class="section-sub">A clear, collaborative process that gets from idea to shipped product efficiently.</p>
+      </div>
+      <div class="process-steps">
+        <div class="process-step reveal">
+          <div class="step-circle">01</div>
+          <h4>Discover</h4>
+          <p>Deep-dive into your problem space, users, and competitive landscape to define what really needs to be built.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">02</div>
+          <h4>Design</h4>
+          <p>Translate insights into wireframes, prototypes, and a polished UI that's tested with real users before a line of code is written.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">03</div>
+          <h4>Build</h4>
+          <p>Iterative development with continuous delivery, code review, and QA so you always know where things stand.</p>
+        </div>
+        <div class="process-step reveal">
+          <div class="step-circle">04</div>
+          <h4>Launch &amp; Grow</h4>
+          <p>Deploy with confidence, measure what matters, and iterate rapidly based on real data and user feedback.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <!-- FEATURED PRODUCT -->
+  <div class="section">
+    <div class="featured-wrap">
+      <div class="featured-visual reveal">
+        <img src="images/circuit.png" alt="Matchmaking App" />
+      </div>
+      <div class="featured-right reveal">
+        <div class="featured-badge">First Product in Pipeline</div>
+        <span class="section-tag">Flagship Product</span>
+        <h2 class="section-title">Matchmaking <span>Assistant App</span></h2>
+        <p>Our first product under the ONIAZ umbrella is a matchmaking assistant app tailored for professionals in the South Asian diaspora — combining cultural understanding with intelligent design.</p>
+        <ul class="feature-list">
+          <li>AI-powered compatibility matching built on meaningful criteria</li>
+          <li>Privacy-first design with user-controlled visibility</li>
+          <li>Clean, intuitive interface designed for busy professionals</li>
+          <li>Deep respect for cultural values and family dynamics</li>
+        </ul>
+        <a href="contact.html" class="btn btn-primary">Express Interest</a>
+      </div>
+    </div>
+  </div>
+
+</div>
+
+<footer>
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <img src="images/logo.jpg" alt="ONIAZ" />
+      <p>Purpose-driven technology built on deep experience and bold innovation. ...out of the box.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Navigation</h4>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About Us</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="team.html">Team</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html">Digital Transformation</a></li>
+        <li><a href="services.html">UX / Product Design</a></li>
+        <li><a href="services.html">Cloud Architecture</a></li>
+        <li><a href="services.html">AI / ML Solutions</a></li>
+        <li><a href="services.html">Strategic Marketing</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <ul>
+        <li><a href="mailto:hello@oniaz.pk">hello@oniaz.pk</a></li>
+        <li><a href="#">Lahore, Pakistan</a></li>
+        <li><a href="#">oniaz.pk</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 ONIAZ. All rights reserved.</span>
+    <div class="footer-socials">
+      <a href="#" aria-label="LinkedIn"><svg viewBox="0 0 24 24"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 0 1-2.063-2.065 2.064 2.064 0 1 1 2.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg></a>
+      <a href="#" aria-label="Twitter/X"><svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg></a>
+    </div>
+  </div>
+</footer>
+
+<script src="js/main.js"></script>
+</body>
+</html>
