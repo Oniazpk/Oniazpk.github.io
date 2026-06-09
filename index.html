@@ -24,11 +24,15 @@
     }
     .hero-circuit {
       position: absolute;
-      right: -40px; top: 50%;
-      transform: translateY(-50%);
-      width: 48%;
-      opacity: 0.18;
+      right: 0; top: 0;
+      width: 52%;
+      height: 100%;
+      object-fit: cover;
+      object-position: left center;
+      opacity: 0.85;
       pointer-events: none;
+      mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, black 60%);
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, rgba(0,0,0,0.6) 20%, black 60%);
     }
     .hero-content {
       position: relative;
@@ -272,7 +276,7 @@
   <!-- HERO -->
   <section class="hero">
     <div class="hero-bg"></div>
-    <img src="images/circuit.png" alt="" class="hero-circuit" />
+    <img src="images/oniaz_hero.jpg" alt="ONIAZ" class="hero-circuit" />
     <div class="hero-content">
       <div class="hero-tag">Founded 2025 &nbsp;·&nbsp; Lahore, Pakistan</div>
       <h1 class="hero-title">
