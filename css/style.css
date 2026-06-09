@@ -13,7 +13,7 @@
   --grey-mid:   #8a8f99;
   --red:        #c0392b;
   --radius:     14px;
-  --nav-h:      150px;
+  --nav-h:      120px;
   --transition: 0.25s ease;
 }
 
@@ -47,7 +47,7 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .nav-logo img {
-  height: 132px;
+  height: 110px;
   width: auto;
   object-fit: contain;
 }
@@ -206,7 +206,7 @@ footer {
   margin-bottom: 48px;
 }
 
-.footer-brand img { height: 48px; margin-bottom: 16px; }
+.footer-brand img { height: 90px; margin-bottom: 16px; }
 .footer-brand p { font-size: 0.85rem; color: var(--grey-mid); line-height: 1.7; max-width: 240px; }
 
 .footer-col h4 {
