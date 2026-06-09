@@ -13,7 +13,7 @@
   --grey-mid:   #8a8f99;
   --red:        #c0392b;
   --radius:     14px;
-  --nav-h:      72px;
+  --nav-h:      150px;
   --transition: 0.25s ease;
 }
 
@@ -47,7 +47,7 @@ a  { text-decoration: none; color: inherit; }
 }
 
 .nav-logo img {
-  height: 44px;
+  height: 132px;
   width: auto;
   object-fit: contain;
 }
